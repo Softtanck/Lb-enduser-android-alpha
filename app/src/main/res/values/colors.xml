@@ -11,4 +11,7 @@
 
     <color name="common_btn_bg_normal">#ff6dce77</color>
     <color name="common_btn_bg_press">#ff0bce03</color>
+
+
+    <color name="home_nav_driver">#CFCFD0</color>
 </resources>

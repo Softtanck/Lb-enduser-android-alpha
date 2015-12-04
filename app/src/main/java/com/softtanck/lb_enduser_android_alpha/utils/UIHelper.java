@@ -12,8 +12,8 @@ import android.widget.ImageView;
 public class UIHelper {
 
     public static void drawPoint(int size, int currentIndex, ImageView imageView) {
-        int radius = 10; // 半径
-        int spacing = 50; // 点之间间隔
+        int radius = 5; // 半径
+        int spacing = 30; // 点之间间隔
         Bitmap points = Bitmap.createBitmap(radius * 2 + spacing * (size - 1), radius * 2, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas();
         canvas.setBitmap(points);

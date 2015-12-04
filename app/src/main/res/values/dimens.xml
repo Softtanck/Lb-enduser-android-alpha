@@ -13,4 +13,6 @@
 
     <dimen name="button_height">28dp</dimen>
     <dimen name="user_name">20sp</dimen>
+
+    <dimen name="normal_name">16sp</dimen>
 </resources>

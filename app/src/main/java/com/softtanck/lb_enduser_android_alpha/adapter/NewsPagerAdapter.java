@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.softtanck.lb_enduser_android_alpha.Bean.AdInfo;
 
 import java.util.List;
@@ -19,6 +21,7 @@ public class NewsPagerAdapter extends PagerAdapter {
 
     private Context context;
     private List<AdInfo> mlist;
+    private ImageView imageView;
 
     public NewsPagerAdapter(Context context, List<AdInfo> list) {
 
@@ -41,13 +44,18 @@ public class NewsPagerAdapter extends PagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         position = position % mlist.size();
-        container.removeView(mlist.get(position));
+        imageView = mlist.get(position).getImageView();
+        container.removeView(imageView);
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         position = position % mlist.size();
-        container.addView(mlist.get(position));
-        return mlist.get(position);
+        imageView = mlist.get(position).getImageView();
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        // TODO 从服务器加载数据
+        Glide.with(context).load(mlist.get(position).getUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
+        container.addView(imageView);
+        return imageView;
     }
 }

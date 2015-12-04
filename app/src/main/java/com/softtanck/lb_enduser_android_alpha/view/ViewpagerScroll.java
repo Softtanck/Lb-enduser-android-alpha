@@ -63,4 +63,9 @@ public class ViewpagerScroll extends Scroller {
         } catch (Exception e) {
         }
     }
+
+
+    public void setScrollSpeed(int speed) {
+        this.mScrollSpeed = speed;
+    }
 }

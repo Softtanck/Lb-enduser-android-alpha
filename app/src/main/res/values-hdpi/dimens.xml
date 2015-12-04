@@ -2,4 +2,7 @@
 <resources>
 
     <dimen name="button_height">18dp</dimen>
+
+
+    <dimen name="adv_height">145dp</dimen>
 </resources>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lb-enduser-android-alpha</string>
+    <string name="app_name">法邦律师</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -12,4 +12,6 @@
     <string name="ask_history">提问历史</string>
 
     <string name="my_lawyer">我的律师</string>
+
+    <string name="recommed_lawyer">推荐律师</string>
 </resources>

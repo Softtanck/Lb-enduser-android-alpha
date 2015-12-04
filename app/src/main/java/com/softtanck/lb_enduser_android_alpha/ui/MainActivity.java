@@ -1,20 +1,14 @@
 package com.softtanck.lb_enduser_android_alpha.ui;
 
-import android.os.Handler;
-import android.os.Message;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.ImageView;
 
 import com.softtanck.lb_enduser_android_alpha.R;
-import com.softtanck.lb_enduser_android_alpha.adapter.NewsPagerAdapter;
-
-import java.util.List;
+import com.softtanck.lb_enduser_android_alpha.impl.PagerImpl;
 
 /**
  * 主界面
@@ -22,21 +16,11 @@ import java.util.List;
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    /**
+     * 广告滚动逻辑
+     */
+    private PagerImpl pager;
 
-    private ViewPager viewPager;
-    private ImageView imageView;
-    private List<ImageView> ivlist;
-    private NewsPagerAdapter pageadapter;
-    private int currentItem;
-
-
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            viewPager.setCurrentItem(++currentItem);
-            handler.sendEmptyMessageDelayed(currentItem, 3500);
-        }
-    };
 
     @Override
     public int getLayoutId() {
@@ -47,6 +31,7 @@ public class MainActivity extends BaseActivity
     public void onCreate() {
         initView();
         intiViewPager();
+
     }
 
     private void initView() {
@@ -65,7 +50,7 @@ public class MainActivity extends BaseActivity
 
 
     private void intiViewPager() {
-
+        pager = new PagerImpl(this);
     }
 
     @Override
@@ -92,9 +77,21 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.nav_slideshow) {
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // 不可见
+        pager.stop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        pager.start();
     }
 }
